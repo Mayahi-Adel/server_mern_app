@@ -17,7 +17,7 @@ const app = express();
 const corsOptions = {
   origin: "https://elastic-heisenberg-0a0fd3.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  preflightContinue: false,
+  preflightContinue: true,
 };
 app.use(cors(corsOptions));
 
