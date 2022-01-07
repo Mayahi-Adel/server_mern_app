@@ -15,7 +15,7 @@ const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 const app = express();
 
 const corsOptions = {
-  origin: "*",
+  origin: "process.env.CLIENT_URL",
   credentials: true,
   allowedHeaders: ["sessionId", "Content-Type"],
   exposedHeaders: ["sessionId"],
