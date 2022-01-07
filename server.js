@@ -15,7 +15,7 @@ const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 const app = express();
 
 const corsOptions = {
-  origin: "process.env.CLIENT_URL",
+  origin: "https://elastic-heisenberg-0a0fd3.netlify.app",
   credentials: true,
   allowedHeaders: ["sessionId", "Content-Type"],
   exposedHeaders: ["sessionId"],
