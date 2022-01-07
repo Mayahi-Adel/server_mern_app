@@ -29,9 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //JWT
-app.get("/", (req, res) => {
-  res.send("welcome");
-});
+
 app.get("*", checkUser);
 app.get("/api/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
