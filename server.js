@@ -18,7 +18,7 @@ const corsOptions = {
   origin: "https://elastic-heisenberg-0a0fd3.netlify.app",
   methods: "GET,PUT,PATCH,POST,DELETE",
 };
-//app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,13 +27,13 @@ app.use(cookieParser());
 //JWT
 
 app.get("*", checkUser);
-app.get("/api/jwtid", cors(corsOptions), requireAuth, (req, res) => {
+app.get("/api/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
 
 // routes
-app.use("/api/user", cors(corsOptions), userRoutes);
-app.use("/api/post", cors(corsOptions), postRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/post", postRoutes);
 
 // serve static assets if in production
 if (process.env.NODE_ENV === "production") {
