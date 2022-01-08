@@ -27,7 +27,7 @@ app.use(cookieParser());
 //JWT
 
 app.get("*", checkUser);
-app.get("/api/jwtid", requireAuth, (req, res) => {
+app.get("/api/jwtid", cors(corsOptions), requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
 
