@@ -35,7 +35,6 @@ module.exports.requireAuth = (req, res, next) => {
       }
     });
   } else {
-    res.send("no-token");
     console.log("No token");
   }
 };
