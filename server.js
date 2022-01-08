@@ -17,8 +17,9 @@ const app = express();
 const corsOptions = {
   origin: "https://elastic-heisenberg-0a0fd3.netlify.app",
   methods: "GET,PUT,PATCH,POST,DELETE",
+  optionsSuccessStatus: 200,
 };
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,10 +27,10 @@ app.use(cookieParser());
 
 //JWT
 
-app.get("*", checkUser);
-app.get("/api/jwtid", requireAuth, (req, res) => {
-  res.status(200).send(res.locals.user._id);
-});
+// app.get("*", checkUser);
+// app.get("/api/jwtid", requireAuth, (req, res) => {
+//   res.status(200).send(res.locals.user._id);
+// });
 
 // routes
 app.use("/api/user", userRoutes);
