@@ -16,7 +16,7 @@ router.delete("/:id", userController.deleteUser);
 router.patch("/follow/:id", userController.followUser);
 router.patch("/unfollow/:id", userController.unfollowUser);
 
-router.get("api/jwtid", (req, res) => {
+router.get("/jwtid", (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
 

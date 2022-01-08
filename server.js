@@ -35,7 +35,7 @@ app.get("*", checkUser);
 //   res.status(200).send(res.locals.user._id);
 // });
 
-app.use("/", requireAuth, userRoutes);
+app.use("/api", requireAuth, userRoutes);
 
 // routes
 app.use("/api/user", userRoutes);
