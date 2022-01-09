@@ -13,9 +13,9 @@ dotenv.config({ path: "./config/.env" });
 const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 
 const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
+
+const client_url = process.env.CLIENT_URL;
+console.log(client_url);
 
 const corsOptions = {
   origin: process.env.CLIENT_URL,
@@ -27,7 +27,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 //JWT
 
 app.get("*", checkUser);
