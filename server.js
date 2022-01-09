@@ -13,9 +13,12 @@ dotenv.config({ path: "./config/.env" });
 const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 
 const corsOptions = {
-  origin: "https://elastic-heisenberg-0a0fd3.netlify.app",
+  origin: process.env.CLIENT_URL,
   credentials: true,
   allowedHeaders: ["sessionId", "Content-Type"],
   exposedHeaders: ["sessionId"],
@@ -23,12 +26,7 @@ const corsOptions = {
   preflightContinue: false,
 };
 
-app.options("*", cors());
 app.use(cors(corsOptions));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 //JWT
 
