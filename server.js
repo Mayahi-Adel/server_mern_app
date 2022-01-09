@@ -15,7 +15,7 @@ const { checkUser, requireAuth } = require("./middleware/auth.middleware");
 const app = express();
 
 const client_url = process.env.CLIENT_URL;
-console.log(client_url);
+console.log("client url: ", client_url);
 
 const corsOptions = {
   origin: process.env.CLIENT_URL,
@@ -38,6 +38,9 @@ app.get("/api/jwtid", requireAuth, (req, res) => {
   res.status(200).send(res.locals.user._id);
 });
 
+app.get("/", (req, res) => {
+  res.send("welcome");
+});
 // routes
 app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
