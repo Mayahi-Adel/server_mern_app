@@ -26,11 +26,11 @@ const corsOptions = {
   preflightContinue: false,
 };
 
-app.use(cors(corsOptions));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(cors(corsOptions));
 //JWT
 
 app.get("*", checkUser);
