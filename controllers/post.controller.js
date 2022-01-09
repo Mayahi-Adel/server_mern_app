@@ -57,6 +57,7 @@ module.exports.createPost = async (req, res) => {
   });
 
   try {
+    console.log("ajout post");
     const post = await newPost.save();
     res.status(201).json(post);
   } catch (err) {
