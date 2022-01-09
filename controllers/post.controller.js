@@ -60,7 +60,7 @@ module.exports.createPost = async (req, res) => {
     const post = await newPost.save();
     res.status(201).json(post);
   } catch (err) {
-    //res.status(500).json({ msg: err.message });
+    res.status(500).json({ msg: err.message });
   }
 };
 
