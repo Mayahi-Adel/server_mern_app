@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors());
+app.use(cors(corsOptions));
 //JWT
 
 app.get("*", checkUser);
