@@ -22,6 +22,8 @@ const corsOptions = {
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
 };
+
+app.options("*", cors());
 app.use(cors(corsOptions));
 
 app.use(express.json());
