@@ -18,7 +18,7 @@ module.exports.readPosts = async (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  const { posterId, message, picture, video } = req.body;
+  const { posterId, message, video } = req.body;
 
   try {
     const file = req?.file;
@@ -61,7 +61,7 @@ module.exports.createPost = async (req, res) => {
     const post = await newPost.save();
     res.status(201).json(post);
   } catch (err) {
-    res.status(500).json({ msg: err.message });
+    //res.status(500).json({ msg: err.message });
   }
 };
 
